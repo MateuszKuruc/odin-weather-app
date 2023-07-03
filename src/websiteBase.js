@@ -1,8 +1,8 @@
 import github from "./img/github.svg";
 import { getData } from "./websiteLogic";
 import { displayData } from "./websiteLogic";
-import termometer from './img/termometer.svg';
-import wind from './img/wind.svg';
+import termometer from "./img/termometer.svg";
+import wind from "./img/wind.svg";
 
 function createHeader() {
   const header = document.createElement("div");
@@ -34,6 +34,13 @@ function createMain() {
 
   searchButton.addEventListener("click", async () => {
     const weatherData = await getData();
+
+    const imagesToRemove = display.querySelectorAll(".conditionImage");
+
+    imagesToRemove.forEach((image) => {
+      image.remove();
+    });
+
     displayData(weatherData);
   });
 
@@ -42,7 +49,7 @@ function createMain() {
 
   const display = document.createElement("div");
   display.classList.add("display");
-  display.classList.add('hidden');
+  display.classList.add("hidden");
 
   const cityName = document.createElement("h2");
   cityName.classList.add("cityName");
@@ -50,17 +57,17 @@ function createMain() {
   const countryName = document.createElement("h5");
   countryName.classList.add("countryName");
 
-  const conditionContainer = document.createElement('div');
-  conditionContainer.classList.add('conditionContainer');
+  const conditionContainer = document.createElement("div");
+  conditionContainer.classList.add("conditionContainer");
 
   const condition = document.createElement("h3");
   condition.classList.add("condition");
 
   conditionContainer.appendChild(condition);
 
-  const tempContainer = document.createElement('div');
-  tempContainer.classList.add('tempContainer');
-  const tempImage = document.createElement('img');
+  const tempContainer = document.createElement("div");
+  tempContainer.classList.add("tempContainer");
+  const tempImage = document.createElement("img");
   tempImage.src = termometer;
 
   const tempC = document.createElement("h4");
@@ -73,10 +80,10 @@ function createMain() {
   tempContainer.appendChild(tempC);
   tempContainer.appendChild(tempF);
 
-  const windContainer = document.createElement('div');
-  windContainer.classList.add('windContainer');
+  const windContainer = document.createElement("div");
+  windContainer.classList.add("windContainer");
 
-  const windImage = document.createElement('img');
+  const windImage = document.createElement("img");
   windImage.src = wind;
 
   const windKph = document.createElement("h4");
@@ -89,11 +96,15 @@ function createMain() {
   windContainer.appendChild(windKph);
   windContainer.appendChild(windMph);
 
-  [cityName, countryName, conditionContainer, tempContainer, windContainer].forEach(
-    (item) => {
-      display.appendChild(item);
-    }
-  );
+  [
+    cityName,
+    countryName,
+    conditionContainer,
+    tempContainer,
+    windContainer,
+  ].forEach((item) => {
+    display.appendChild(item);
+  });
 
   container.appendChild(searchBar);
   container.appendChild(display);
