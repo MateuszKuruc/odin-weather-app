@@ -30,11 +30,19 @@ function createMain() {
   userInput.classList.add("userInput");
   userInput.placeholder = "Enter city name...";
 
+  userInput.addEventListener("keypress", handleKeyPress);
+
   const searchButton = document.createElement("button");
   searchButton.classList.add("searchButton");
   searchButton.textContent = "Search location";
 
-  searchButton.addEventListener("click", async () => {
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      searchWeather();
+    }
+  }
+
+  async function searchWeather() {
     searchLocation = userInput.value;
     if (userInput.value.length < 2) return;
 
@@ -48,14 +56,14 @@ function createMain() {
 
     displayData(weatherData);
 
-    userInput.value = '';
-    errorMessage.classList.add('hidden');
-  });
+    userInput.value = "";
+    errorMessage.classList.add("hidden");
+  }
 
-  const errorMessage = document.createElement('h4');
-  errorMessage.classList.add('errorMessage');
-  errorMessage.textContent = 'Please enter valid location details!';
-  errorMessage.classList.add('hidden');
+  const errorMessage = document.createElement("h4");
+  errorMessage.classList.add("errorMessage");
+  errorMessage.textContent = "Please enter valid location details!";
+  errorMessage.classList.add("hidden");
 
   searchBar.appendChild(errorMessage);
   searchBar.appendChild(userInput);
