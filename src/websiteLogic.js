@@ -42,6 +42,7 @@ export async function displayData(weatherData) {
 const display = document.querySelector('.display');
 display.classList.remove('hidden');
 
+
     console.log('event', weatherData);
     const cityName = document.querySelector('.cityName');
     cityName.textContent = weatherData.cityName;
@@ -54,8 +55,22 @@ display.classList.remove('hidden');
     condition.textContent = weatherData.condition;
 
     const conditionImage = document.createElement('img');
-    // conditionImage.src = `${condition.textContent.toLowerCase()}`;
-    conditionImage.src = sunny;
+   
+    if (condition.textContent.includes('sunny') || condition.textContent.includes('Sunny')) {
+        conditionImage.src = sunny;
+    }   else if (condition.textContent.includes('rain') || condition.textContent.includes('Rain') || condition.textContent.includes('drizzle')) {
+        conditionImage.src = rain;
+    }   else if (condition.textContent.includes('partly')) {
+        conditionImage.src = partly_cloudy;
+    }   else if (condition.textContent.includes('snow') || condition.textContent.includes('Snow') || condition.textContent.includes('sleet') || condition.textContent.includes('freez') || condition.textContent.includes('Blizzard')) {
+        conditionImage.src = snow;
+    }   else if (condition.textContent.includes('mist') || condition.textContent.includes('Mist') || condition.textContent.includes('Fog') || condition.textContent.includes('fog')) {
+        conditionImage.src = fog;
+    }   else if (condition.textContent.includes('cloud') || condition.textContent.includes('Cloud')) {
+        conditionImage.src = cloudy;
+    }   else if (condition.textContent.includes('thunder') || condition.textContent.includes('Thunder')) {
+        conditionImage.src = thunder;
+    }
 
     conditionContainer.appendChild(conditionImage);
 
