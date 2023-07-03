@@ -7,43 +7,40 @@ import snow from "./img/snow.svg";
 import thunder from "./img/thunder.svg";
 import { searchLocation } from "./websiteBase";
 
-
-
 export async function getData() {
-    try {
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=96c79cc416274630a78142949232906&q=${searchLocation}`,
-    { mode: "cors" }
-  );
-  const weatherData = await response.json();
-  console.log(weatherData);
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=96c79cc416274630a78142949232906&q=${searchLocation}`,
+      { mode: "cors" }
+    );
+    const weatherData = await response.json();
+    console.log(weatherData);
 
-  const countryName = weatherData.location.country;
-  const cityName = weatherData.location.name;
-  const condition = weatherData.current.condition.text;
-  const tempC = weatherData.current.temp_c;
-  const tempF = weatherData.current.temp_f;
-  const windKph = weatherData.current.wind_kph;
-  const windMph = weatherData.current.wind_mph;
+    const countryName = weatherData.location.country;
+    const cityName = weatherData.location.name;
+    const condition = weatherData.current.condition.text;
+    const tempC = weatherData.current.temp_c;
+    const tempF = weatherData.current.temp_f;
+    const windKph = weatherData.current.wind_kph;
+    const windMph = weatherData.current.wind_mph;
 
-  const locationObject = {
-    countryName,
-    cityName,
-    condition,
-    tempC,
-    tempF,
-    windKph,
-    windMph,
-  };
+    const locationObject = {
+      countryName,
+      cityName,
+      condition,
+      tempC,
+      tempF,
+      windKph,
+      windMph,
+    };
 
-  return locationObject;
-} catch (error) {
-    console.log('error occurred:', error);
-    console.log('Please enter valid location details!');
-    const errorMessage = document.querySelector('.errorMessage');
-    errorMessage.classList.remove('hidden');
+    return locationObject;
+  } catch (error) {
+    const errorMessage = document.querySelector(".errorMessage");
+    errorMessage.classList.remove("hidden");
+
     throw error;
-}
+  }
 }
 
 export async function displayData(weatherData) {
@@ -62,11 +59,12 @@ export async function displayData(weatherData) {
   condition.textContent = weatherData.condition;
 
   const conditionImage = document.createElement("img");
-  conditionImage.classList.add('conditionImage');
+  conditionImage.classList.add("conditionImage");
 
   if (
     condition.textContent.includes("sunny") ||
-    condition.textContent.includes("Sunny")
+    condition.textContent.includes("Sunny") ||
+    condition.textContent.includes("Clear")
   ) {
     conditionImage.src = sunny;
   } else if (
@@ -94,7 +92,8 @@ export async function displayData(weatherData) {
     conditionImage.src = fog;
   } else if (
     condition.textContent.includes("cloud") ||
-    condition.textContent.includes("Cloud")
+    condition.textContent.includes("Cloud") ||
+    condition.textContent.includes("Overcast")
   ) {
     conditionImage.src = cloudy;
   } else if (
