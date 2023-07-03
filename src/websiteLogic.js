@@ -5,10 +5,12 @@ import partly_cloudy from "./img/partly_cloudy.svg";
 import rain from "./img/rain.svg";
 import snow from "./img/snow.svg";
 import thunder from "./img/thunder.svg";
+import { searchLocation } from "./websiteBase";
 
-const searchLocation = "Przeworsk";
+
 
 export async function getData() {
+    try {
   const response = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=96c79cc416274630a78142949232906&q=${searchLocation}`,
     { mode: "cors" }
@@ -35,6 +37,13 @@ export async function getData() {
   };
 
   return locationObject;
+} catch (error) {
+    console.log('error occurred:', error);
+    console.log('Please enter valid location details!');
+    const errorMessage = document.querySelector('.errorMessage');
+    errorMessage.classList.remove('hidden');
+    throw error;
+}
 }
 
 export async function displayData(weatherData) {

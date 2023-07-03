@@ -51,13 +51,15 @@ body {
 }
 
 .tempContainer,
-.windContainer {
+.windContainer,
+.conditionContainer {
   display: flex;
   width: 100%;
   border: 3px solid black;
   justify-content: center;
   align-items: center;
 }
+
 
 
 .display {
@@ -70,4 +72,8 @@ body {
 
 .hidden {
   display: none;
+}
+
+.errorMessage {
+  color: red;
 }

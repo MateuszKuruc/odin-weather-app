@@ -4,6 +4,8 @@ import { displayData } from "./websiteLogic";
 import termometer from "./img/termometer.svg";
 import wind from "./img/wind.svg";
 
+export let searchLocation;
+
 function createHeader() {
   const header = document.createElement("div");
   header.classList.add("header");
@@ -33,6 +35,9 @@ function createMain() {
   searchButton.textContent = "Search location";
 
   searchButton.addEventListener("click", async () => {
+    searchLocation = userInput.value;
+    if (userInput.value.length < 2) return;
+
     const weatherData = await getData();
 
     const imagesToRemove = display.querySelectorAll(".conditionImage");
@@ -42,8 +47,17 @@ function createMain() {
     });
 
     displayData(weatherData);
+
+    userInput.value = '';
+    errorMessage.classList.add('hidden');
   });
 
+  const errorMessage = document.createElement('h4');
+  errorMessage.classList.add('errorMessage');
+  errorMessage.textContent = 'Please enter valid location details!';
+  errorMessage.classList.add('hidden');
+
+  searchBar.appendChild(errorMessage);
   searchBar.appendChild(userInput);
   searchBar.appendChild(searchButton);
 

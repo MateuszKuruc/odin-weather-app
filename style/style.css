@@ -39,7 +39,8 @@ body {
 }
 
 .tempContainer,
-.windContainer {
+.windContainer,
+.conditionContainer {
   display: flex;
   width: 100%;
   border: 3px solid black;
@@ -57,4 +58,8 @@ body {
 
 .hidden {
   display: none;
+}
+
+.errorMessage {
+  color: red;
 }/*# sourceMappingURL=style.css.map */
