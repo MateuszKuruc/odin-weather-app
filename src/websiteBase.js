@@ -1,4 +1,8 @@
 import github from "./img/github.svg";
+import { getData } from "./websiteLogic";
+import { displayData } from "./websiteLogic";
+import termometer from './img/termometer.svg';
+import wind from './img/wind.svg';
 
 function createHeader() {
   const header = document.createElement("div");
@@ -22,15 +26,74 @@ function createMain() {
   const userInput = document.createElement("input");
   userInput.type = "text";
   userInput.classList.add("userInput");
+  userInput.placeholder = "Enter city name...";
 
   const searchButton = document.createElement("button");
   searchButton.classList.add("searchButton");
+  searchButton.textContent = "Search location";
+
+  searchButton.addEventListener("click", async () => {
+    const weatherData = await getData();
+    displayData(weatherData);
+  });
+
+  searchBar.appendChild(userInput);
+  searchBar.appendChild(searchButton);
 
   const display = document.createElement("div");
   display.classList.add("display");
+  display.classList.add('hidden');
 
-  userInput.appendChild(userInput);
-  userInput.appendChild(searchButton);
+  const cityName = document.createElement("h2");
+  cityName.classList.add("cityName");
+
+  const countryName = document.createElement("h5");
+  countryName.classList.add("countryName");
+
+  const conditionContainer = document.createElement('div');
+  conditionContainer.classList.add('conditionContainer');
+
+  const condition = document.createElement("h3");
+  condition.classList.add("condition");
+
+  conditionContainer.appendChild(condition);
+
+  const tempContainer = document.createElement('div');
+  tempContainer.classList.add('tempContainer');
+  const tempImage = document.createElement('img');
+  tempImage.src = termometer;
+
+  const tempC = document.createElement("h4");
+  tempC.classList.add("tempC");
+
+  const tempF = document.createElement("h4");
+  tempF.classList.add("tempF");
+
+  tempContainer.appendChild(tempImage);
+  tempContainer.appendChild(tempC);
+  tempContainer.appendChild(tempF);
+
+  const windContainer = document.createElement('div');
+  windContainer.classList.add('windContainer');
+
+  const windImage = document.createElement('img');
+  windImage.src = wind;
+
+  const windKph = document.createElement("h4");
+  windKph.classList.add("windKph");
+
+  const windMph = document.createElement("h4");
+  windMph.classList.add("windMph");
+
+  windContainer.appendChild(windImage);
+  windContainer.appendChild(windKph);
+  windContainer.appendChild(windMph);
+
+  [cityName, countryName, conditionContainer, tempContainer, windContainer].forEach(
+    (item) => {
+      display.appendChild(item);
+    }
+  );
 
   container.appendChild(searchBar);
   container.appendChild(display);
@@ -58,4 +121,16 @@ function createFooter() {
   footer.appendChild(githubLink);
 
   return footer;
+}
+
+export function startWebsite() {
+  const { body } = document;
+
+  body.appendChild(createHeader());
+  body.appendChild(createMain());
+  body.appendChild(createFooter());
+
+  // getData();
+  // displayData();
+  // useWebsite();
 }
