@@ -6,7 +6,7 @@
 }
 
 img {
-  height: 2.5rem;
+  height: 3.5rem;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   margin: 0;
+  background-image: linear-gradient(86.3deg, rgb(0, 119, 182) 3.6%, rgb(8, 24, 68) 87.6%);
 }
 
 .header {
@@ -23,8 +24,8 @@ body {
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  background: rgb(245, 203, 134);
-  background: linear-gradient(34deg, rgb(245, 203, 134) 8%, rgb(126, 89, 54) 92%);
+  background: rgb(111, 195, 247);
+  background: linear-gradient(121deg, rgb(111, 195, 247) 35%, rgb(194, 253, 255) 100%);
 }
 
 .footer {
@@ -34,15 +35,20 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  background: rgb(245, 203, 134);
-  background: linear-gradient(34deg, rgb(245, 203, 134) 8%, rgb(126, 89, 54) 92%);
+  background: rgb(111, 195, 247);
+  background: linear-gradient(121deg, rgb(111, 195, 247) 35%, rgb(194, 253, 255) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .topContainer {
   display: flex;
-  border: 3px solid red;
   justify-content: space-around;
   padding: 2rem;
+  align-items: center;
 }
 
 .tempContainer,
@@ -50,17 +56,27 @@ body {
 .conditionContainer {
   display: flex;
   width: 100%;
-  border: 3px solid black;
   justify-content: center;
   align-items: center;
+  padding: 0.25rem;
+  gap: 1rem;
 }
 
 .display {
+  margin-top: 5rem;
+  color: white;
   display: flex;
   flex-direction: column;
+  width: min(50%, 500px);
   justify-content: center;
   align-items: center;
-  border: 3px solid blue;
+  align-self: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 3px solid black;
+  border-radius: 1rem;
+  background: rgb(111, 195, 247);
+  background: linear-gradient(121deg, rgb(111, 195, 247) 35%, rgb(194, 253, 255) 100%);
 }
 
 .hidden {
@@ -69,4 +85,42 @@ body {
 
 .errorMessage {
   color: red;
+  align-self: center;
+  margin-top: 1rem;
+  background-color: white;
+  border: 7px double red;
+  padding: 0.25rem;
+}
+
+.toggleContainer {
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+}
+.searchBar input {
+  font-weight: 900;
+  padding: 1rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 3px solid black;
+}
+
+button {
+  font-weight: 900;
+  padding: 1rem;
+  height: 3rem;
+  background: rgb(111, 195, 247);
+  background: linear-gradient(121deg, rgb(111, 195, 247) 35%, rgb(194, 253, 255) 100%);
+  color: black;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 18px;
 }/*# sourceMappingURL=style.css.map */

@@ -37,7 +37,7 @@ function createMain() {
 
   const searchButton = document.createElement("button");
   searchButton.classList.add("searchButton");
-  searchButton.textContent = "Search location";
+  searchButton.textContent = "Search";
 
   function handleKeyPress(event) {
     if (event.key === "Enter") {
@@ -75,7 +75,7 @@ function createMain() {
   errorMessage.textContent = "Please enter valid location details!";
   errorMessage.classList.add("hidden");
 
-  searchBar.appendChild(errorMessage);
+  container.appendChild(errorMessage);
   searchBar.appendChild(userInput);
   searchBar.appendChild(searchButton);
 
@@ -104,7 +104,7 @@ function createMain() {
   display.classList.add("display");
   display.classList.add("hidden");
 
-  const cityName = document.createElement("h2");
+  const cityName = document.createElement("h1");
   cityName.classList.add("cityName");
 
   const countryName = document.createElement("h5");
@@ -113,7 +113,7 @@ function createMain() {
   const conditionContainer = document.createElement("div");
   conditionContainer.classList.add("conditionContainer");
 
-  const condition = document.createElement("h3");
+  const condition = document.createElement("h2");
   condition.classList.add("condition");
 
   conditionContainer.appendChild(condition);
@@ -123,10 +123,10 @@ function createMain() {
   const tempImage = document.createElement("img");
   tempImage.src = termometer;
 
-  const tempC = document.createElement("h4");
+  const tempC = document.createElement("h2");
   tempC.classList.add("tempC");
 
-  const tempF = document.createElement("h4");
+  const tempF = document.createElement("h2");
   tempF.classList.add("tempF");
   tempF.classList.add('hidden');
 
@@ -140,10 +140,10 @@ function createMain() {
   const windImage = document.createElement("img");
   windImage.src = wind;
 
-  const windKph = document.createElement("h4");
+  const windKph = document.createElement("h2");
   windKph.classList.add("windKph");
 
-  const windMph = document.createElement("h4");
+  const windMph = document.createElement("h2");
   windMph.classList.add("windMph");
   windMph.classList.add('hidden');
 
