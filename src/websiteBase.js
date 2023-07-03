@@ -40,6 +40,8 @@ function createMain() {
   searchButton.classList.add("searchButton");
   searchButton.textContent = "Search";
 
+  searchButton.addEventListener('click', searchWeather);
+
   function handleKeyPress(event) {
     if (event.key === "Enter") {
       searchWeather();
