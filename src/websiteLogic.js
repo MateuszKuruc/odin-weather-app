@@ -14,7 +14,7 @@ export async function getData() {
       { mode: "cors" }
     );
     const weatherData = await response.json();
-    console.log(weatherData);
+
 
     const countryName = weatherData.location.country;
     const cityName = weatherData.location.name;
@@ -47,7 +47,6 @@ export async function displayData(weatherData) {
   const display = document.querySelector(".display");
   display.classList.remove("hidden");
 
-  console.log("event", weatherData);
   const cityName = document.querySelector(".cityName");
   cityName.textContent = weatherData.cityName;
 

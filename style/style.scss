@@ -48,6 +48,14 @@ body {
 
 .container {
 //  border: 3px solid red;
+// display: flex;
+}
+
+.topContainer {
+  display: flex;
+  border: 3px solid red;
+  justify-content: space-around;
+  padding: 2rem;
 }
 
 .tempContainer,
@@ -77,3 +85,4 @@ body {
 .errorMessage {
   color: red;
 }
+

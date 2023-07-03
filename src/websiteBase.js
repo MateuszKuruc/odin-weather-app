@@ -22,6 +22,9 @@ function createMain() {
   const container = document.createElement("div");
   container.classList.add("container");
 
+    const topContainer = document.createElement('div');
+    topContainer.classList.add('topContainer');
+
   const searchBar = document.createElement("div");
   searchBar.classList.add("searchBar");
 
@@ -60,6 +63,13 @@ function createMain() {
     errorMessage.classList.add("hidden");
   }
 
+  function toggleUnit() {
+    tempF.classList.toggle('hidden');
+    tempC.classList.toggle('hidden');
+    windMph.classList.toggle('hidden');
+    windKph.classList.toggle('hidden');
+  }
+
   const errorMessage = document.createElement("h4");
   errorMessage.classList.add("errorMessage");
   errorMessage.textContent = "Please enter valid location details!";
@@ -68,6 +78,27 @@ function createMain() {
   searchBar.appendChild(errorMessage);
   searchBar.appendChild(userInput);
   searchBar.appendChild(searchButton);
+
+  const toggleContainer = document.createElement('div');
+  toggleContainer.classList.add('toggleContainer');
+
+  const toggleSwitch = document.createElement('input');
+  toggleSwitch.classList.add('toggleSwitch');
+  toggleSwitch.type = 'checkbox';
+  toggleSwitch.checked = 'true';
+  toggleSwitch.id = 'toggle';
+
+  const toggleLabel = document.createElement('lable');
+  toggleLabel.htmlFor = 'toggle';
+  toggleLabel.textContent = '°C/kmh';
+
+  toggleSwitch.addEventListener('click', toggleUnit);
+
+  toggleContainer.appendChild(toggleSwitch);
+  toggleContainer.appendChild(toggleLabel);
+
+  topContainer.appendChild(searchBar);
+  topContainer.appendChild(toggleContainer);
 
   const display = document.createElement("div");
   display.classList.add("display");
@@ -97,6 +128,7 @@ function createMain() {
 
   const tempF = document.createElement("h4");
   tempF.classList.add("tempF");
+  tempF.classList.add('hidden');
 
   tempContainer.appendChild(tempImage);
   tempContainer.appendChild(tempC);
@@ -113,6 +145,7 @@ function createMain() {
 
   const windMph = document.createElement("h4");
   windMph.classList.add("windMph");
+  windMph.classList.add('hidden');
 
   windContainer.appendChild(windImage);
   windContainer.appendChild(windKph);
@@ -128,7 +161,8 @@ function createMain() {
     display.appendChild(item);
   });
 
-  container.appendChild(searchBar);
+
+  container.appendChild(topContainer);
   container.appendChild(display);
 
   return container;

@@ -38,6 +38,13 @@ body {
   background: linear-gradient(34deg, rgb(245, 203, 134) 8%, rgb(126, 89, 54) 92%);
 }
 
+.topContainer {
+  display: flex;
+  border: 3px solid red;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
 .tempContainer,
 .windContainer,
 .conditionContainer {
