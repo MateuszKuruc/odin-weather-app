@@ -1,6 +1,7 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/no-mutable-exports */
 import github from "./img/github.svg";
-import { getData } from "./websiteLogic";
-import { displayData } from "./websiteLogic";
+import { getData, displayData } from "./websiteLogic";
 import termometer from "./img/termometer.svg";
 import wind from "./img/wind.svg";
 
@@ -22,8 +23,8 @@ function createMain() {
   const container = document.createElement("div");
   container.classList.add("container");
 
-    const topContainer = document.createElement('div');
-    topContainer.classList.add('topContainer');
+  const topContainer = document.createElement("div");
+  topContainer.classList.add("topContainer");
 
   const searchBar = document.createElement("div");
   searchBar.classList.add("searchBar");
@@ -64,10 +65,10 @@ function createMain() {
   }
 
   function toggleUnit() {
-    tempF.classList.toggle('hidden');
-    tempC.classList.toggle('hidden');
-    windMph.classList.toggle('hidden');
-    windKph.classList.toggle('hidden');
+    tempF.classList.toggle("hidden");
+    tempC.classList.toggle("hidden");
+    windMph.classList.toggle("hidden");
+    windKph.classList.toggle("hidden");
   }
 
   const errorMessage = document.createElement("h4");
@@ -79,20 +80,20 @@ function createMain() {
   searchBar.appendChild(userInput);
   searchBar.appendChild(searchButton);
 
-  const toggleContainer = document.createElement('div');
-  toggleContainer.classList.add('toggleContainer');
+  const toggleContainer = document.createElement("div");
+  toggleContainer.classList.add("toggleContainer");
 
-  const toggleSwitch = document.createElement('input');
-  toggleSwitch.classList.add('toggleSwitch');
-  toggleSwitch.type = 'checkbox';
-  toggleSwitch.checked = 'true';
-  toggleSwitch.id = 'toggle';
+  const toggleSwitch = document.createElement("input");
+  toggleSwitch.classList.add("toggleSwitch");
+  toggleSwitch.type = "checkbox";
+  toggleSwitch.checked = "true";
+  toggleSwitch.id = "toggle";
 
-  const toggleLabel = document.createElement('lable');
-  toggleLabel.htmlFor = 'toggle';
-  toggleLabel.textContent = '°C/kmh';
+  const toggleLabel = document.createElement("lable");
+  toggleLabel.htmlFor = "toggle";
+  toggleLabel.textContent = "°C/kmh";
 
-  toggleSwitch.addEventListener('click', toggleUnit);
+  toggleSwitch.addEventListener("click", toggleUnit);
 
   toggleContainer.appendChild(toggleSwitch);
   toggleContainer.appendChild(toggleLabel);
@@ -128,7 +129,7 @@ function createMain() {
 
   const tempF = document.createElement("h2");
   tempF.classList.add("tempF");
-  tempF.classList.add('hidden');
+  tempF.classList.add("hidden");
 
   tempContainer.appendChild(tempImage);
   tempContainer.appendChild(tempC);
@@ -145,7 +146,7 @@ function createMain() {
 
   const windMph = document.createElement("h2");
   windMph.classList.add("windMph");
-  windMph.classList.add('hidden');
+  windMph.classList.add("hidden");
 
   windContainer.appendChild(windImage);
   windContainer.appendChild(windKph);
@@ -160,7 +161,6 @@ function createMain() {
   ].forEach((item) => {
     display.appendChild(item);
   });
-
 
   container.appendChild(topContainer);
   container.appendChild(display);
@@ -196,8 +196,4 @@ export function startWebsite() {
   body.appendChild(createHeader());
   body.appendChild(createMain());
   body.appendChild(createFooter());
-
-  // getData();
-  // displayData();
-  // useWebsite();
 }

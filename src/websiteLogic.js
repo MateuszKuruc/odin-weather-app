@@ -1,7 +1,7 @@
 import sunny from "./img/sunny.svg";
 import cloudy from "./img/cloudy.svg";
 import fog from "./img/fog.svg";
-import partly_cloudy from "./img/partly_cloudy.svg";
+import partlyCloudy from "./img/partly_cloudy.svg";
 import rain from "./img/rain.svg";
 import snow from "./img/snow.svg";
 import thunder from "./img/thunder.svg";
@@ -14,7 +14,6 @@ export async function getData() {
       { mode: "cors" }
     );
     const weatherData = await response.json();
-
 
     const countryName = weatherData.location.country;
     const cityName = weatherData.location.name;
@@ -73,7 +72,7 @@ export async function displayData(weatherData) {
   ) {
     conditionImage.src = rain;
   } else if (condition.textContent.includes("partly")) {
-    conditionImage.src = partly_cloudy;
+    conditionImage.src = partlyCloudy;
   } else if (
     condition.textContent.includes("snow") ||
     condition.textContent.includes("Snow") ||
@@ -105,10 +104,10 @@ export async function displayData(weatherData) {
   conditionContainer.appendChild(conditionImage);
 
   const tempC = document.querySelector(".tempC");
-  tempC.textContent = weatherData.tempC + "°C";
+  tempC.textContent = `${weatherData.tempC} °C`;
 
   const tempF = document.querySelector(".tempF");
-  tempF.textContent = weatherData.tempF + "°F";
+  tempF.textContent = `${weatherData.tempF} °F`;
 
   const windKph = document.querySelector(".windKph");
   windKph.textContent = `${weatherData.windKph} km/h`;
