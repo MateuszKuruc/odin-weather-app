@@ -1,6 +1,9 @@
 # odin-weather-app
 
 <p>Weather app that allows you to check weather conditions in any place you want.</p>
+
+
+[Weather app live](https://mateuszkuruc.github.io/odin-weather-app/)
 <h2>Goals</h2>
 <p>The aim is to build an app which will handle the data provided by the external API and display the results to the user.</p>
 <p>The app is built with JavaScript, HTML and CSS.</p>
