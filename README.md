@@ -17,3 +17,4 @@
 </ul>
 <h2>Visual representation</h2>
 <img width="500px" src="src/img/weather_1.png" alt="weather app desktop screenshot" />
+In case of any questions, feel free to contact me directly.
